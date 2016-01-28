@@ -2,13 +2,9 @@
 
 open System
 open System.Web.Http
-
-type HttpRoutesDefaults = { Controller: string; Id : obj }
+open Piter.Samples.Booking.HttpApi.Infrastructure
 
 type Global() =
     inherit System.Web.HttpApplication()
     member this.Application_Start ( sender : obj ) ( e : EventArgs ) = 
-        GlobalConfiguration.Configuration.Routes.MapHttpRoute(
-            "DeafaultAPI",
-            "{controller}/{id}",
-            { Controller = "Home"; Id = RouteParameter.Optional }) |> ignore
+        Configure GlobalConfiguration.Configuration
